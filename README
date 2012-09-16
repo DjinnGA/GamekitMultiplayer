@@ -1,0 +1,43 @@
+Modified 16th Sept 2012 Giles Allensby
+
+***** GameKit With Multiplayer for Gideros Studio ****
+******************************************************
+
+This is an adaptation of the origional GameKit Plugin for Gideros Studio
+
+Events are dispatched to Gideros Studio.
+
+Known issues:
+
+1. Not all methods and properties are implemented.
+
+Gideros GameKit Plugin API
+
+To use the plugin:
+
+Copy gamekit.mm to Xcode project "plugins" directory and replace existing one.
+
+In lua file:
+
+require "gamekit"
+
+Lua API
+
+---------------- Functions ----------------
+gamekit:btConnect() -- Show Peer Picker
+gamekit:btDisconnectAll() -- Disconnect Peers
+
+gamekit:btSendString(String) -- Send String
+gamekit:btSendTable(luaTable) -- Send Table
+
+---------------- Listeners ----------------
+gamekit:addEventListener("peerPickerCanceled", functionToRun) -- Peer Picker Cancelled
+gamekit:addEventListener("peersDisconnected", functionToRun) -- All Peers Disconnected
+
+gamekit:addEventListener("peerConnected", functionToRun) -- Peer Connected [Passes Variables event.peerID as string]
+gamekit:addEventListener("peerDisconnected", functionToRun) -- Peer Disconnected [Passes Variables event.peerID as string]
+gamekit:addEventListener("peerUnavailable", functionToRun) -- Peer Unavailable [Passes Variables event.peerID as string]
+gamekit:addEventListener("peerAvailable", functionToRun) -- Peer Available [Passes Variables event.peerID as string]
+gamekit:addEventListener("peerConnecting", functionToRun) -- Peer Connecting [Passes Variables event.peerID as string]
+
+gamekit:addEventListener("recievedData", functionToRun) -- Data Recieved [Passes Variables event.data as table if table recieved, event.dataString if string recieved]
