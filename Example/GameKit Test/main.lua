@@ -73,6 +73,12 @@ local function onPeerConnect(event)
 end
 gamekit:addEventListener("peerConnected", onPeerConnect)
 
+-- Peer Disconnected
+local function onPeerDisconnect(event)
+	print(event.peerID .. " Disconnected")
+end
+gamekit:addEventListener("peerDisconnected", onPeerDisconnect)
+
 -- Recieved Data
 local function onRecieveData(event)
 	print("Data Recieved")

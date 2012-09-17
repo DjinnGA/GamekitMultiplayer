@@ -300,7 +300,8 @@ static void dispatchEvent(lua_State* L, char const *type, NSError *error, NSArra
     picker.delegate = nil;
     
     [picker dismiss];
-    //[picker autorelease];
+    picker = nil;
+    [picker autorelease];
 }
 
 - (void)session:(GKSession *)session
@@ -402,7 +403,7 @@ public:
         if (currentSession)
         {
             [currentSession disconnectFromAllPeers];
-            //[currentSession release];
+            [currentSession release];
             currentSession = nil;
             dispatchEvent(L ,DISCONNECTED_ALL_PEERS, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
         }
